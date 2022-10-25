@@ -2,7 +2,7 @@
 name = "mapreduce"
 version = "0.1.0"
 description = "ICS map-reduce practice"
-authors = ["Your Name <you@example.com>"]
+authors = ["davidfraga92@gmail.com"]
 license = "MIT License"
 readme = "README.md"
 
