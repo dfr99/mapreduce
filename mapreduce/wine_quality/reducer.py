@@ -2,22 +2,15 @@
 import sys
 from functools import reduce
 
-file_lines = 1599
 keys = []
 sums = []
 
+red_lines = 1599
+white_lines = 4598
 
 for line in sys.stdin:
-    line_array = line.strip("\n").split("\t")
-    # result = reduce(lambda x: x / len(line_array[1].split(","), line_array[1].split(",")))
-    # print(line_array[0], result)
-    keys.append(line_array[0])
-    sums.append(float(line_array[1]))
-
-reduce_res = list(map(lambda x: x / file_lines, sums))
-
-
-i = 0
-while i < len(keys):
-    print("%s\t%.4f" % (keys[i], reduce_res[i]))
-    i += 1
+    line_array = line.strip("").split("\t")
+    if line_array[0] == "red":
+        print("%s\t%s\t%s" % (line_array[0], line_array[1], float(line_array[2]) / red_lines))
+    elif line_array[0] == "white":
+        print("%s\t%s\t%s" % (line_array[0], line_array[1], float(line_array[2]) / white_lines))
