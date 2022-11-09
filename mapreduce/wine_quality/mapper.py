@@ -1,35 +1,31 @@
 #!/usr/bin/env python
 
+
+import os
 import sys
-from operator import add
 
 
-is_first_line = True
-wine = "red"
+iterator = 0
+names = ["fixed acidity", "volatile acidity", "citric acid", "residual sugar", "chlorides", "free sulfur dioxide", "total sulfur dioxide", "density", "pH", "sulphates", "alcohol", "quality"]
 
 
+# Obtain file name and format it to retrieve the type of wine
+file_path = os.environ['mapreduce_map_input_file']
+wine = file_path.split('/')[-1].split('-')[1].split('.')[0]
+
+
+# input comes from STDIN (standard input)
 for line in sys.stdin:
-    # skip the first line (the header)
-    if is_first_line:
-        is_first_line = False
-        keys = line.strip().split(";")
-        result = [0] * len(keys)
-    else:
-        try:
-            float_line = [float(x) for x in line.split(";")]
-        except ValueError:
-            i = 0
-            # Print red wine data
-            while i < len(keys):
-                print("%s\t%s\t%.4f" % (wine, keys[i], result[i]))
-                i += 1
-            wine = "white"
-            result = [0] * len(keys)
-        result = list(map(add, result, float_line))
+    # remove leading and trailing whitespace
+    # split the line into the different values
+    values = line.strip().split(';')
 
+    # we skip the line containing strings
+    if '"fixed acidity"' in values:
+        continue
 
-# Print white wine data
-i = 0
-while i < len(keys):
-    print("%s\t%s\t%.4f" % (wine, keys[i], result[i]))
-    i += 1
+    for value in values:
+        print('%s\t%s' % (wine + ' ' + names[iterator], value))
+        iterator += 1
+
+    iterator = 0
