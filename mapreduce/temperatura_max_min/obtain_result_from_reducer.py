@@ -2,7 +2,7 @@
 import os
 
 
-path = os.getcwd() + "/salida_2017_temp/"
+path = os.getcwd() + "/salida_2017/"
 files = os.listdir(path)
 max_temperature = 0
 max_temperature_code = None
