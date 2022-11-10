@@ -9,8 +9,9 @@ Email: david.fraga.rodriguez@udc.es
 ### temperatura_max_min
 
 ```bash
-docker run --hostname=quickstart.cloudera --privileged=true -t -i --cpus=4 -v /home/david/Desktop/college/ICS/Prácticas/MapReduce/mapreduce/mapreduce/temperatura_max_min:/home/cloudera/practicas --publish-all=true -p 7180 cloudera/quickstart /usr/bin/docker-quickstart
+docker run --hostname=quickstart.cloudera --privileged=true -t -i --cpus=4 -v $HOME/Desktop/college/ICS/Prácticas/MapReduce/mapreduce/mapreduce/temperatura_max_min:/home/cloudera/practicas --publish-all=true -p 7180 cloudera/quickstart /usr/bin/docker-quickstart
 
+cd /home/cloudera/practicas
 hdfs dfs -put files/2017/
 hdfs dfs -ls
 
@@ -28,8 +29,9 @@ python3 obtain_result_from_reducer.py
 ### webclient_logs
 
 ```bash
-docker run --hostname=quickstart.cloudera --privileged=true -t -i --cpus=4 -v /home/david/Desktop/college/ICS/Prácticas/MapReduce/mapreduce/mapreduce/webclient_logs:/home/cloudera/practicas --publish-all=true -p 7180 cloudera/quickstart /usr/bin/docker-quickstart
+docker run --hostname=quickstart.cloudera --privileged=true -t -i --cpus=4 -v $HOME/Desktop/college/ICS/Prácticas/MapReduce/mapreduce/mapreduce/webclient_logs:/home/cloudera/practicas --publish-all=true -p 7180 cloudera/quickstart /usr/bin/docker-quickstart
 
+cd /home/cloudera/practicas
 hdfs dfs -put files/condensed/272/Feb95/
 hdfs dfs -ls
 
@@ -43,8 +45,9 @@ hdfs dfs -get salida_Feb95/
 ### wine_quality
 
 ```bash
-docker run --hostname=quickstart.cloudera --privileged=true -t -i --cpus=4 -v /home/david/Desktop/college/ICS/Prácticas/MapReduce/mapreduce/mapreduce/wine_quality/:/home/cloudera/practicas --publish-all=true -p 7180 cloudera/quickstart /usr/bin/docker-quickstart
+docker run --hostname=quickstart.cloudera --privileged=true -t -i --cpus=4 -v $HOME/Desktop/college/ICS/Prácticas/MapReduce/mapreduce/mapreduce/wine_quality/:/home/cloudera/practicas --publish-all=true -p 7180 cloudera/quickstart /usr/bin/docker-quickstart
 
+cd /home/cloudera/practicas
 hdfs dfs -put files/
 hdfs dfs -ls
 
